@@ -1,0 +1,3 @@
+
+DRAFT = 'Draft'
+PUBLISHED = 'Published'

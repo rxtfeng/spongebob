@@ -1,0 +1,30 @@
+{% extends 'blog/blog.html' %}
+{% load staticfiles %}
+
+{% block title %} Not Found | RXTFENG BLOG {% endblock title %}
+
+{% block content %}
+<main role="main">
+
+    <section>
+        <div class="error-box">
+            <img src="{% static 'blog/img/404.png' %}" alt="">
+            <img src="{% static 'blog/img/page_not_found.png' %}" alt="">
+        </div>
+
+        <div class="error-box">
+            <div class="widget widget-search">
+                <form action="" class="form-search" method="get" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" value="" name="s">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default" value="Search" name="submit"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock content %}

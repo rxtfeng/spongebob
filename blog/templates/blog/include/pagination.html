@@ -1,0 +1,24 @@
+{% load i18n %}
+{% with page=page_obj %}
+<nav class="pagination" role="navigation">
+    <div class="page-links">
+        <ul class="page-numbers">
+            {% if page.has_previous %}
+            <li><a href="?page={{ page.previous_page_number }}" class="page-numbers previous">Previous page</a></li>
+            {% endif %}
+
+            {% for number in left %}
+            <li><a href="?page={{ number }}" class="page-numbers">{{ number }}</a></li>
+            {% endfor %}
+            <li><span class="page-numbers current">{{ current }}</span></li>
+            {% for number in right %}
+            <li><a href="?page={{ number }}" class="page-numbers">{{ number }}</a></li>
+            {% endfor %}
+
+            {% if page.has_next %}
+            <li><a href="?page={{ page.next_page_number }}" class="page-numbers next">Next page</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+{% endwith %}

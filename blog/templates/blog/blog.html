@@ -1,0 +1,41 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+{% endblock style %}
+
+
+{% block logo %}
+<div class="logo">
+    <a href=""><img src="{% static 'blog/img/blog_logo.png' %}" alt=""></a>
+</div>
+{% endblock logo %}
+
+{% block navbar %}
+<div class="container">
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-center" id="navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'blog:blog_index' %}">{% trans 'Home' %}</a></li>
+            <li><a href="https://github.com/rxtfeng">{% trans 'Github' %}</a></li>
+            <li><a href="{% url 'blog:contact' %}">{% trans 'Contact' %}</a></li>
+            <li><a href="{% url 'blog:about' %}">{% trans 'About' %}</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock navbar %}
+
+{% block content %}{% endblock content %}
+
+{% block script %}{% endblock script %}

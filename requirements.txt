@@ -1,0 +1,7 @@
+Django==1.10.7
+Markdown==2.6.8
+olefile==0.44
+Pillow==4.2.1
+pymdown-extensions==3.5
+pytz==2017.2
+sqlparse==0.2.3

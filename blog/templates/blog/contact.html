@@ -1,0 +1,32 @@
+{% extends 'blog/blog.html' %}
+{% load i18n %}
+
+{% block title %} Contact | RXTFENG BLOG {% endblock title %}
+
+{% block content %}
+<main role="main">
+
+    <div class="contact-form">
+        <div class="form-header">{% trans 'Contact Me' %}</div>
+        <div class="form-body">
+            <form action="{% url 'blog:contact' %}" class="form-info" method="post" role="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">{% trans 'Enter Name' %} *</label>
+                    <input type="text" class="form-control {% if form.errors.username %}error" placeholder="{{ form.errors.username.0 }}{% endif %}"  value="{{ form.cleaned_data.username }}" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="email">{% trans 'Enter Email' %} *</label>
+                    <input type="text" class="form-control {% if form.errors.email %}error" placeholder="{{ form.errors.email.0 }}{% endif %}" value="{{ form.cleaned_data.email }}" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="message">{% trans 'Enter Message' %} *</label>
+                    <textarea {% if form.errors.message %}class="error" value="{{ form.cleaned_data.message }}" placeholder="{{ form.errors.email.0 }}"{% endif %} name="message" rows="8"></textarea>
+                </div>
+                <button type="submit" class="btn btn-info">{% trans 'Post Message' %}</button>
+            </form>
+        </div>
+    </div>
+
+</main>
+{% endblock content %}

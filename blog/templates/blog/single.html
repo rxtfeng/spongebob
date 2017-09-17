@@ -1,0 +1,117 @@
+{% extends 'blog/blog.html' %}
+{% load staticfiles %}
+
+{% block title %} Detail | RXTFENG BLOG {% endblock title %}
+
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'blog/css/highlight/atom-one-light.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="post-page">
+    <main role="main">
+
+        {% if article %}
+            {% include 'blog/include/article.html' %}
+        {% endif %}
+
+        <nav class="post-navigation" role="navigation">
+            <div class="nav-links">
+                {% with previous=article.previous_post next=article.next_post %}
+                {% if previous %}
+                <div class="nav-previous">
+                    <a href="{{ previous.get_absolute_url }}"><span class="meta-nav">Previous Post</span> <i class="fa fa-angle-double-right"></i> <span id="prev-title">{{ previous.title | truncatewords:5 }}</span></a>
+                </div>
+                {% endif %}
+                {% if next %}
+                <div class="nav-next">
+                    <a href="{{ next.get_absolute_url }}"><span id="next-title">{{ next.title | truncatewords:5 }}</span> <i class="fa fa-angle-double-left"></i> <span class="meta-nav">Next Post</span></a>
+                </div>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </nav>
+
+        {% if article.comment_enable %}
+        <div class="comments">
+            <ol class="comment-list">
+                <li class="comment">
+                    <article class="comment-body">
+                        <div class="comment-meta">
+                            <div class="comment-author">
+                                <img src="{% static 'blog/img/avatar.png' %}" alt="" class="avatar">
+                                <b class="fn"><a href="">incididunt</a></b>
+                            </div>
+                            <div class="comment-metadata">
+                                <a href=""><time>February 16, 2016 at 4:57 pm</time></a>
+                            </div>
+                            <div class="comment-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div class="reply">
+                                <a href="" class="comment-reply-link">Reply</a>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                <li class="comment">
+                    <article class="comment-body">
+                        <div class="comment-meta">
+                            <div class="comment-author">
+                                <img src="{% static 'blog/img/avatar.png' %}" alt="" class="avatar">
+                                <b class="fn"><a href="">Lorem</a></b>
+                            </div>
+                            <div class="comment-metadata">
+                                <a href=""><time>February 16, 2016 at 4:57 pm</time></a>
+                            </div>
+                            <div class="comment-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
+                            <div class="reply">
+                                <a href="" class="comment-reply-link">Reply</a>
+                            </div>
+                        </div>
+                    </article>
+                </li>
+            </ol>
+        </div>
+
+        <div class="comment-form">
+            <div class="form-body">
+                <form action="" class="form-info" method="post" role="form">
+                    <div class="form-group"><label for="username">Enter Name *</label><input type="text" class="form-control" name="username"></div>
+                    <div class="form-group"><label for="email">Enter Email *</label><input type="text" class="form-control" name="email"></div>
+                    <div class="form-group"><label for="website">Enter Website [optional]</label><input type="text" class="form-control" name="website"></div>
+                    <div class="form-group"><label for="comment">Enter Comment *</label><textarea name="comment" rows="8"></textarea></div>
+                    <button type="submit" class="btn btn-info" name="button">Post Comment</button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+
+    </main>
+</div>
+{% endblock content %}
+
+{% block script %}
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+<script type="text/javascript" src="{% static 'blog/js/MathJax/MathJax.js' %}"></script>
+<script type="text/javascript" src="{% static 'blog/js/MathJax/config/TeX-AMS_HTML.js' %}"></script>
+
+
+<script type="text/javascript" src="{% static 'blog/js/highlight-9.4.0.min.js' %}"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript">
+    $("table").addClass("table").wrap("<div class='table-responsive'></div>")
+</script>
+
+{% endblock script %}

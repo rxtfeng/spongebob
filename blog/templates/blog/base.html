@@ -1,0 +1,47 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock title %}</title>
+
+    <link rel="shortcut icon" type="text/css" href="{% static 'blog/img/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/font-awesome.min.css' %}">
+
+    {% block style %}{% endblock style %}
+</head>
+<body>
+    <header class="masthead" role="banner">
+        <div class="container">
+            {% block logo %}{% endblock logo %}
+        </div>
+        <nav class="navbar" role="navigation">
+            {% block navbar %}{% endblock navbar %}
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+
+    <p id="back-top"><a href=""><i class="fa fa-angle-up"></i></a></p>
+
+    <footer class="mastfoot" role="contentinfo">
+        <div class="footer-bottom">
+            <div class="site-info">Copyright &copy; 2017 RXTFENG BLOG. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="{% static 'blog/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'blog/js/jquery-migrate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    {% block script %}{% endblock script %}
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% load i18n %}
+{% load staticfiles %}
+{% load blog %}
+
+{% if detail %}
+<article class="detail">
+    <!--
+    <div class="post-image">
+        <a href="{{ article.get_absolute_url }}"><img src="{% static 'rango/img/2017-06-10-231100.jpg' %}" alt=""></a>
+    </div>
+    -->
+    <div class="post-header">
+        <span class="category">
+            {% for category in article.categories.all %}
+            <a href="{{ category.get_absolute_url }}">{% if forloop.first %} | {% endif %}{{ category.title }} | </a>
+            {% endfor %}
+        </span>
+        <h1><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h1>
+        <span class="date">{{ article.publish_date | date:"F j, Y" }}</span>
+    </div>
+    <div class="post-entry">
+        {{ article.content | markdown }}
+    </div>
+    <div class="post-meta">
+        <div class="post-tags">
+            <span><i class="fa fa-tags"></i></span>
+            {% for tag in article.tags.all %}
+            <a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</article>
+{% else %}
+<article class="list">
+    <div class="post-image">
+        <a href="{{ article.get_absolute_url }}"><img src="{% static 'blog/img/2017-06-10-231100.jpg' %}" alt=""></a>
+    </div>
+    <div class="post-header">
+        <span class="category">
+            {% for category in article.categories.all %}
+            <a href="{{ category.get_absolute_url }}">{% if forloop.first %} | {% endif %}{{ category.title }} | </a>
+            {% endfor %}
+        </span>
+        <h2><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
+        <span class="date">{{ article.publish_date | date:"F j, Y" }}</span>
+    </div>
+    <div class="post-entry">
+        <p>{{ article.content | truncatewords:50}}</p>
+        <p class="read-more"><a href="{{ article.get_absolute_url }}">Continue Reading</a></p>
+    </div>
+</article>
+{% endif %}
